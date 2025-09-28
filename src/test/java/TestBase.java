@@ -16,6 +16,9 @@ public class TestBase {
     @BeforeAll
     static void setupConfig() {
         Configuration.remote = System.getProperty("selenoid_url");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserSize = System.getProperty("resolution", "1980x1080");
+        Configuration.browserVersion = System.getProperty("browser_version", "127.0");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of("enableVNC", true, "enableVideo", true));
