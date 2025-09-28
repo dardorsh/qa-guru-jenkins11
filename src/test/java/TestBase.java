@@ -15,15 +15,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class TestBase {
     @BeforeAll
     static void setupConfig() {
-        String selenoidUrl = System.getProperty("selenoid_url");
-
-        if (selenoidUrl != null && !selenoidUrl.isEmpty()) {
-            Configuration.remote = selenoidUrl;
-
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("selenoid:options", Map.<String, Object>of("enableVNC", true, "enableVideo", true));
-            Configuration.browserCapabilities = capabilities;
-        }
+        Configuration.remote = System.getProperty("selenoid_url");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of("enableVNC", true, "enableVideo", true));
