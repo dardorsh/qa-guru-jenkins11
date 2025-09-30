@@ -35,8 +35,12 @@ public class RegistrationPage {
     @Step("Открыть страницу с формой")
     public RegistrationPage openPage() {
         open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        if ($("#fixedban").isDisplayed()) {
+            executeJavaScript("$('#fixedban').remove()");
+        }
+        if ($("footer").isDisplayed()) {
+            executeJavaScript("$('footer').remove()");
+        }
 
         return this;
     }
